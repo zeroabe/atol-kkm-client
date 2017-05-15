@@ -4,6 +4,7 @@ namespace KKMClient\Devices;
 
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Accessor;
+use JMS\Serializer\Annotation\Type;
 
 
 class Device
@@ -12,6 +13,7 @@ class Device
      * @var integer
      * @SerializedName("NumDevice")
      * @Accessor(getter="getDeviceNumber",setter="setDeviceNumber")
+     * @Type("integer")
      */
     protected $deviceNumber;
 
@@ -19,6 +21,7 @@ class Device
      * @var string
      * @SerializedName("IdDevice")
      * @Accessor(getter="getDeviceId",setter="setDeviceId")
+     * @Type("string")
      */
     protected $deviceId;
 
@@ -26,6 +29,7 @@ class Device
      * @var boolean
      * @SerializedName("OnOf")
      * @Accessor(getter="geState",setter="setState")
+     * @Type("boolean")
      */
     protected $state;
 
@@ -33,6 +37,7 @@ class Device
      * @var boolean
      * @SerializedName("Active")
      * @Accessor(getter="getStatus",setter="setStatus")
+     * @Type("boolean")
      */
     protected $status;
 
@@ -40,6 +45,7 @@ class Device
      * @var string
      * @SerializedName("TypeDevice")
      * @Accessor(getter="getDeviceType",setter="setDeviceType")
+     * @Type("boolean")
      */
     protected $deviceType;
 
@@ -47,6 +53,7 @@ class Device
      * @var string
      * @SerializedName("IdDeviceType")
      * @Accessor(getter="getDeviceTypeId",setter="setDeviceTypeId")
+     * @Type("string")
      */
     protected $deviceTypeId;
 
@@ -54,6 +61,7 @@ class Device
      * @var string
      * @SerializedName("IP")
      * @Accessor(getter="getIP",setter="setIP")
+     * @Type("string")
      */
     protected $IP;
 
@@ -61,6 +69,7 @@ class Device
      * @var string
      * @SerializedName("NameDevice")
      * @Accessor(getter="getDeviceName",setter="setDeviceName")
+     * @Type("string")
      */
     protected $deviceName;
 
@@ -68,6 +77,7 @@ class Device
      * @var string
      * @serializedName("KktNumber")
      * @Accessor(getter="getKktNumber",setter="setKktNumber")
+     * @Type("string")
      */
     protected $kktNumber;
 
@@ -82,6 +92,7 @@ class Device
      * @var string
      * @SerializedName("TaxVariant")
      * @Accessor(getter="getTax",setter="setTax")
+     * @Type("string")
      */
     protected $tax;
 
@@ -89,6 +100,7 @@ class Device
      * @var string
      * @SerializedName("AddDate")
      * @Accessor(getter="getDateAdded",setter="setDateAdded")
+     * @Type("string")
      */
     protected $dateAdded;
 
@@ -96,6 +108,7 @@ class Device
      * @var string
      * @SerializedName("OFD_Error")
      * @Accessor(getter="getOFDError",setter="setOFDError")
+     * @Type("string")
      */
     protected $OFDError;
 
@@ -103,6 +116,7 @@ class Device
      * @var integer
      * @SerializedName("OFD_NumErrorDoc")
      * @Accessor(getter="getOFDNumErrorDoc",setter="setOFDNumErrorDoc")
+     * @Type("integer")
      */
     protected $OFDNumErrorDoc;
 
@@ -110,6 +124,7 @@ class Device
      * @var string
      * @SerializedName("OFD_DateErrorDoc")
      * @Accessor(getter="getOFDDateErrorDoc",setter="setOFDDateErrorDoc")
+     * @Type("string")
      */
     protected $OFDDateErrorDoc;
 
@@ -124,6 +139,7 @@ class Device
      * @var boolean
      * @SerializedName("FN_MemOverflow")
      * @Accessor(getter="getFNMemOverflow",setter="setFNMemOverflow")
+     * @Type("boolean")
      */
     protected $FNMemOverflow;
 
@@ -131,6 +147,7 @@ class Device
      * @var boolean
      * @SerializedName("FN_IsFiscal")
      * @Accessor(getter="getFNIsFiscal",setter="setFNIsFiscal)
+     * @Type("boolean")
      */
     protected $FNIsFiscal;
 
@@ -138,6 +155,7 @@ class Device
      * @var boolean
      * @SerializedName("PaperOver")
      * @Accessor(getter="getPaperOut",setter="setPaperOut")
+     * @Type("boolean")
      */
     protected $paperOut;
 

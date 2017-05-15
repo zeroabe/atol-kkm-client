@@ -3,22 +3,22 @@
 namespace KKMClient\Queries;
 
 use Ramsey\Uuid;
-use JMS\Serializer\Annotation\Accessor;
+use JMS\Serializer\Annotation\SerializedName;
+use JMS\Serializer\Annotation\AccessType;
+use KKMClient\Queries\Enums\CheckTypes;
+use KKMClient\Queries\Enums\Taxes;
 
+/**
+ * Class Command
+ * @package KKMClient\Queries
+ * @AccessType("public_method")
+ */
 class Command
 {
     /**
-     * @Accessor(getter="getId", setter="setId")
+     * @var string
+     * @SerializedName("IdCommand")
      */
-    protected $IdCommand;
+    protected $id;
 
-    public function getId()
-    {
-        return $this->IdCommand;
-    }
-
-    public function setId()
-    {
-        $this->IdCommand = Uuid\Uuid::uuid1();
-    }
 }
