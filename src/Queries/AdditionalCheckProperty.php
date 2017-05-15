@@ -16,8 +16,26 @@ class AdditionalCheckProperty extends CheckProperty
      */
     protected $propName;
 
-    public function __construct () { }
+    public function __construct ()
+    {
+        parent::__construct();
+    }
 
+    /**
+     * @return string
+     */
+    public function getPropName (): string
+    {
+        return $this->propName;
+    }
+
+    /**
+     * @param string $propName
+     */
+    public function setPropName ( string $propName )
+    {
+        $this->propName = $propName;
+    }
 
 
 }
