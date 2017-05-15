@@ -1,0 +1,21 @@
+{
+    "name": "zeroabe/atol-kkm-client",
+    "description": "HTTP Client for using with kkmserver",
+    "version": "0.0.1-dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mikhail A Musofranov",
+            "email": "elremz@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"": "src/"}
+    },
+    "require": {
+        "php": "^5.5 || ^7.0",
+        "ramsey/uuid": "^3.6",
+        "guzzlehttp/guzzle": "^6.2",
+        "jms/serializer": "^1.7"
+    }
+}
