@@ -29,8 +29,59 @@ class CheckString
     protected $register;
 
     /**
-     * @var
+     * @var \KKMClient\Queries\Chunks\BarcodeChunk
+     * @SerializedName("BarCode")
+     * @Type("\KKMClient\Queries\Chunks\BarcodeChunk")
      */
     protected $barcode;
 
+    public function __construct () { }
+
+    /**
+     * @return PrintTextChunk
+     */
+    public function getPrintText (): PrintTextChunk
+    {
+        return $this->printText;
+    }
+
+    /**
+     * @param PrintTextChunk $printText
+     */
+    public function setPrintText ( PrintTextChunk $printText )
+    {
+        $this->printText = $printText;
+    }
+
+    /**
+     * @return Chunks\RegisterChunk
+     */
+    public function getRegister (): Chunks\RegisterChunk
+    {
+        return $this->register;
+    }
+
+    /**
+     * @param Chunks\RegisterChunk $register
+     */
+    public function setRegister ( Chunks\RegisterChunk $register )
+    {
+        $this->register = $register;
+    }
+
+    /**
+     * @return Chunks\BarcodeChunk
+     */
+    public function getBarcode (): Chunks\BarcodeChunk
+    {
+        return $this->barcode;
+    }
+
+    /**
+     * @param Chunks\BarcodeChunk $barcode
+     */
+    public function setBarcode ( Chunks\BarcodeChunk $barcode )
+    {
+        $this->barcode = $barcode;
+    }
 }

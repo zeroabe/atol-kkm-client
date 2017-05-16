@@ -34,4 +34,56 @@ class PrintTextChunk
      * @Type("integer")
      */
     protected $intensity;
+
+    public function __construct () { }
+
+    /**
+     * @return string
+     */
+    public function getText (): string
+    {
+        return $this->text;
+    }
+
+    /**
+     * @param string $text
+     */
+    public function setText ( string $text )
+    {
+        $this->text = $text;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFont (): int
+    {
+        return $this->font;
+    }
+
+    /**
+     * @param int $font
+     */
+    public function setFont ( int $font )
+    {
+        $this->font = $font;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIntensity (): int
+    {
+        return $this->intensity;
+    }
+
+    /**
+     * @param int $intensity
+     */
+    public function setIntensity ( int $intensity )
+    {
+        $this->intensity = $intensity;
+    }
+
+
 }
