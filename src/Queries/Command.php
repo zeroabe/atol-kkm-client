@@ -18,6 +18,7 @@ use KKMClient\Queries\Enums\CheckTypes;
 class Command implements CommandInterface
 {
     use CommonCommandTrait;
+
     /**
      * @var string
      * @SerializedName("IdCommand")
@@ -44,7 +45,6 @@ class Command implements CommandInterface
      * @Type("string")
      */
     protected $kkmInn;
-
 
     /**
      * @var integer
@@ -186,17 +186,17 @@ class Command implements CommandInterface
     /**
      * @return bool
      */
-    public function isIsFiscal (): bool
+    public function isFiscal (): bool
     {
-        return $this->isFiscal;
+        return $this->fiscal;
     }
 
     /**
      * @param bool $isFiscal
      */
-    public function setIsFiscal ( bool $isFiscal )
+    public function setFiscal ( bool $isFiscal )
     {
-        $this->isFiscal = $isFiscal;
+        $this->fiscal = $isFiscal;
     }
 
     /**

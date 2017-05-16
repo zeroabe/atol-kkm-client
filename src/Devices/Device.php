@@ -138,7 +138,7 @@ class Device
     /**
      * @var boolean
      * @SerializedName("FN_MemOverflow")
-     * @Accessor(getter="getFNMemOverflow",setter="setFNMemOverflow")
+     * @Accessor(getter="isFNMemOverflow",setter="setFNMemOverflow")
      * @Type("boolean")
      */
     protected $FNMemOverflow;
@@ -146,7 +146,7 @@ class Device
     /**
      * @var boolean
      * @SerializedName("FN_IsFiscal")
-     * @Accessor(getter="getFNIsFiscal",setter="setFNIsFiscal)
+     * @Accessor(getter="isFNIsFiscal",setter="setFNIsFiscal)
      * @Type("boolean")
      */
     protected $FNIsFiscal;
@@ -154,10 +154,10 @@ class Device
     /**
      * @var boolean
      * @SerializedName("PaperOver")
-     * @Accessor(getter="getPaperOut",setter="setPaperOut")
+     * @Accessor(getter="isOutOfPaper",setter="setOutOfPaper")
      * @Type("boolean")
      */
-    protected $paperOut;
+    protected $outOfPaper;
 
     public function __construct () { }
 
@@ -452,18 +452,16 @@ class Device
     /**
      * @return bool
      */
-    public function isPaperOut (): bool
+    public function isOutOfPaper (): bool
     {
-        return $this->paperOut;
+        return $this->outOfPaper;
     }
 
     /**
-     * @param bool $paperOut
+     * @param bool $outOfPaper
      */
-    public function setPaperOut ( bool $paperOut )
+    public function setPaperOut ( bool $outOfPaper )
     {
-        $this->paperOut = $paperOut;
+        $this->outOfPaper = $outOfPaper;
     }
-
-
 }

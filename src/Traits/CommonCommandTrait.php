@@ -15,9 +15,12 @@ trait CommonCommandTrait
         return $this->id;
     }
 
-    public function setId()
+    public function setId( string $id = null )
     {
-        $this->id = Uuid::uuid1()->toString();
+        if (!$id)
+            $this->id = Uuid::uuid1()->toString();
+        else
+            $this->id = $id;
     }
     public function getName() :string
     {
