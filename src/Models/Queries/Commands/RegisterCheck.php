@@ -5,6 +5,7 @@ namespace KKMClient\Models\Queries\Commands;
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\AccessType;
 use JMS\Serializer\Annotation\Accessor;
+use JMS\Serializer\Annotation\Type;
 
 /**
  * Class RegisterCheck
@@ -46,7 +47,7 @@ class RegisterCheck extends CommonCommand
      * @var boolean
      * @SerializedName("CancelOpenedCheck")
      * @Type("boolean")
-     * @Accessor(getter="getOpenedCheckCancellation",setter="setOpenedCheckCancellation))
+     * @Accessor(getter="getOpenedCheckCancellation",setter="setOpenedCheckCancellation")
      */
     protected $cancelOpenedCheck;
 

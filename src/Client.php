@@ -6,6 +6,7 @@ use JMS\Serializer\Exception\LogicException;
 use KKMClient\Interfaces\CommandInterface;
 use KKMClient\Factories\QueriesFactory;
 
+include_once 'Autoload/registry.php';
 
 /**
  * Class Client
