@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: zeroabe
- * Date: 16.05.17
- * Time: 12:15
- */
 
-namespace KKMClient\Queries\Enums;
+namespace KKMClient\Models\Queries\Enums;
 
 
 class CommandStatuses

@@ -1,57 +1,31 @@
 <?php
 
-namespace KKMClient\Queries;
+namespace KKMClient\Models\Queries\Commands;
 
-use KKMClient\Interfaces\CommandInterface;
-use KKMClient\Traits\CommonCommandTrait;
-use Ramsey\Uuid\Uuid;
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\AccessType;
 use JMS\Serializer\Annotation\Accessor;
-use KKMClient\Queries\Enums\CheckTypes;
 
 /**
- * Class Command
- * @package KKMClient\Queries
+ * Class RegisterCheck
+ * @package KKMClient\Models\Queries\Commands
  * @AccessType("public_method")
  */
-class Command implements CommandInterface
+class RegisterCheck extends CommonCommand
 {
-    use CommonCommandTrait;
-
-    /**
-     * @var string
-     * @SerializedName("IdCommand")
-     */
-    protected $id;
-
-    /**
-     * @var string
-     * @SerializedName("Command")
-     * @Type("string")
-     */
-    protected $name;
-
     /**
      * @var integer
      * @SerializedName("NumDevice")
      * @Type("integer")
      */
-    protected $deviceNumber;
+    protected $deviceNumber = 0;
 
     /**
      * @var string
      * @SerializedName("InnKkm")
      * @Type("string")
      */
-    protected $kkmInn;
-
-    /**
-     * @var integer
-     * @SerializedName("Timeout")
-     * @Type("integer")
-     */
-    protected $timeout;
+    protected $kkmInn = "";
 
     /**
      * @var boolean
@@ -101,7 +75,7 @@ class Command implements CommandInterface
     /**
      * @var array
      * @SerializedName("CheckStrings")
-     * @Type("array<\KKMClient\Queries\CheckString>")
+     * @Type("array<KKMClient\Models\Queries\Chunks\CheckString>")
      */
     protected $strings = [];
 
@@ -133,7 +107,10 @@ class Command implements CommandInterface
      */
     protected $cashlessPayment3;
 
-    public function __construct () { }
+    public function __construct ($attributes = [])
+    {
+
+    }
 
     /**
      * @return int
@@ -165,22 +142,6 @@ class Command implements CommandInterface
     public function setKkmInn ( string $kkmInn )
     {
         $this->kkmInn = $kkmInn;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTimeout (): int
-    {
-        return $this->timeout;
-    }
-
-    /**
-     * @param int $timeout
-     */
-    public function setTimeout ( int $timeout )
-    {
-        $this->timeout = $timeout;
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace KKMClient\Devices;
+namespace KKMClient\Models\Devices;
 
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Accessor;

@@ -1,9 +1,11 @@
 <?php
-
 namespace KKMClient;
 
 use GuzzleHttp\Client as Http;
+use JMS\Serializer\Exception\LogicException;
 use KKMClient\Interfaces\CommandInterface;
+use KKMClient\Factories\QueriesFactory;
+
 
 /**
  * Class Client
@@ -12,11 +14,25 @@ use KKMClient\Interfaces\CommandInterface;
  */
 class Client
 {
+    /**
+     * @var Http
+     */
     private $http;
 
+    /**
+     * @var string
+     */
     private $url;
 
+    /**
+     * @var array
+     */
     private $commands = [];
+
+    /**
+     * @var QueriesFactory
+     */
+    private $factory;
 
     /**
      * Client constructor.
@@ -34,9 +50,35 @@ class Client
             ]
         ];
         $this->http = new Http($config);
+        $this->factory = new QueriesFactory();
     }
 
-    public function addCommand(CommandInterface $command)
+    /**
+     * @param CommandInterface $command
+     */
+    protected function addCommand( CommandInterface $command)
+    {
+        $this->commands[] = $command;
+    }
+
+    /**
+     * @param $attributes
+     */
+    public function resolveCommand( $attributes )
+    {
+        if(!isset($attributes['Command'])) {
+            throw new LogicException("Wrong request body!");
+        }
+
+        $name = $attributes['Command'];
+        $command = $this->factory->$name($attributes);
+        return $command;
+    }
+
+    /**
+     *
+     */
+    public function executeCommands()
     {
 
     }

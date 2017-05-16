@@ -1,10 +1,11 @@
 <?php
 
-namespace KKMClient\Queries;
+namespace KKMClient\Models\Queries\Chunks;
 
-use KKMClient\Queries\CheckProperty;
+use KKMClient\Models\Queries\Chunks\CheckProperty;
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Accessor;
+use JMS\Serializer\Annotation\Type;
 
 
 class AdditionalCheckProperty extends CheckProperty
@@ -13,6 +14,7 @@ class AdditionalCheckProperty extends CheckProperty
      * @var string
      * @SerializedName("NameProp")
      * @Accessor(getter="getPropName",setter="setPropName")
+     * @Type("string")
      */
     protected $propName;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace KKMClient\Queries;
+namespace KKMClient\Models\Queries\Chunks;
 
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\AccessType;
