@@ -47,6 +47,9 @@ trait CommonCommandTrait
         return $this->id;
     }
 
+    /**
+     * @param string|null $id
+     */
     public function setId( string $id = null )
     {
         if (!$id)
@@ -80,5 +83,10 @@ trait CommonCommandTrait
     public function setTimeout ( int $timeout )
     {
         $this->timeout = $timeout;
+    }
+
+    public function getResponseClassName()
+    {
+        return '';
     }
 }

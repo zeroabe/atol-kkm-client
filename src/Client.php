@@ -6,6 +6,7 @@ use JMS\Serializer\Exception\LogicException;
 use KKMClient\Interfaces\CommandInterface;
 use KKMClient\Factories\QueriesFactory;
 use Autoload\Annotations;
+use KKMClient\Models\Devices\Device;
 
 /**
  * Class Client
@@ -24,10 +25,11 @@ class Client
      */
     private $url;
 
-    /**
-     * @var array
-     */
-    private $commands = [];
+    private $commands;
+
+    private $devices;
+
+    private $responses;
 
     /**
      * @var QueriesFactory
@@ -59,7 +61,14 @@ class Client
      */
     protected function addCommand( CommandInterface $command)
     {
-        $this->commands[] = $command;
+        if(!isset($this->commands[$command->getName()]))
+            $this->commands[$command->getName()] = [];
+        $this->commands[$command->getName()][$command->getId()] = $command;
+    }
+
+    protected function addDevice( Device $device )
+    {
+
     }
 
     /**
@@ -81,10 +90,8 @@ class Client
         $deviceQuery = $this->factory->List();
     }
 
-    /**
-     *
-     */
-    public function executeCommands()
+
+    public function executeCommand( CommandInterface $command )
     {
 
     }

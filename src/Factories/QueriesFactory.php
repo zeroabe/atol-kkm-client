@@ -53,14 +53,16 @@ class QueriesFactory
      * @return array|\JMS\Serializer\scalar|mixed|object
      * @throws UnknownKKMCommand
      */
-    public function __call ( $name, $arguments )
+    public function __call ( $name, $arguments = null )
     {
-        $name = ucfirst($name);
-        if (!in_array($name, $this->commands)) {
-            throw new UnknownKKMCommand("Command {$name} not implemented or not supported by KKMServer");
-        }
+        $name = $this->getCommandClassName($name);
+
         $class          = "KKMClient\\Models\\Queries\\Commands\\".$name;
-        $attributes     = $this->encodeAttributes($arguments[0], $class);
+        if($arguments && is_array($arguments) &&  isset($arguments[0])) {
+            $attributes     = $this->encodeAttributes($arguments[0], $class);
+        } else {
+            $attributes = [];
+        }
         $queryObject    = $this->serializer->deserialize($attributes, $class, 'json');
 
         return $queryObject;
@@ -74,5 +76,12 @@ class QueriesFactory
     protected function encodeAttributes( $attributes)
     {
         return $this->json->encode($attributes);
+    }
+
+    protected function getCommandClassName($commandName)
+    {
+        if (!in_array($commandName, $this->commands)) {
+            throw new UnknownKKMCommand("Command {$commandName} not implemented or not supported by KKMServer");
+        }
     }
 }

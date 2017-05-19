@@ -28,8 +28,6 @@ class DeserializeEventSubscriber implements EventSubscriberInterface
         $visitor    = $event->getVisitor();
         $type       = $event->getType();
         $data       = $event->getData();
-        var_dump($data);
-
     }
 
     public function onPostDeserialize(ObjectEvent $event)
