@@ -8,6 +8,7 @@ use JMS\Serializer\Exception\LogicException;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use KHerGe\JSON\JSON;
+use KKMClient\Exceptions\UnknownKKMCommand;
 use KKMClient\Models\Queries\Enums\Commands;
 use KKMClient\Factories\ReflectionFactory;
 use KKMClient\Subscribers\PreSerializeEventSubscriber;
@@ -47,8 +48,9 @@ class QueriesFactory
             $attributes = $this->compareAttributes($arguments, $class);
             $queryObject = $this->serializer->deserialize($attributes, $class, 'json');
             return $queryObject;
+        } else {
+            throw new UnknownKKMCommand("Command {$name} not implemented or not supported by KKMServer");
         }
-        return null;
     }
 
     protected function compareAttributes($attributes, $className)
