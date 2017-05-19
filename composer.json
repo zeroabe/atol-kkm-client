@@ -10,7 +10,10 @@
         }
     ],
     "autoload": {
-        "psr-4": {"KKMClient\\": "src/"}
+        "psr-4": {
+            "KKMClient\\": "src/",
+            "Autoload\\": "src/Autoload"
+        }
     },
     "require": {
         "php": "^5.5 || ^7.0",

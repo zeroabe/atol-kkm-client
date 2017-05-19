@@ -5,8 +5,7 @@ use GuzzleHttp\Client as Http;
 use JMS\Serializer\Exception\LogicException;
 use KKMClient\Interfaces\CommandInterface;
 use KKMClient\Factories\QueriesFactory;
-
-include_once 'Autoload/registry.php';
+use Autoload\Annotations;
 
 /**
  * Class Client
@@ -52,6 +51,7 @@ class Client
         ];
         $this->http = new Http($config);
         $this->factory = new QueriesFactory();
+        Annotations::registry();
     }
 
     /**
