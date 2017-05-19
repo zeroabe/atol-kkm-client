@@ -28,6 +28,6 @@ class DefaultSerializeHandler implements SubscribingHandlerInterface
      */
     public static function getSubscribingMethods ()
     {
-        // TODO: Implement getSubscribingMethods() method.
+
     }
 }

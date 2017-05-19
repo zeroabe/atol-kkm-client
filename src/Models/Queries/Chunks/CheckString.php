@@ -17,21 +17,21 @@ class CheckString
     /**
      * @var \KKMClient\Models\Queries\Chunks\PrintTextChunk
      * @SerializedName("PrintText")
-     * @Type("\KKMClient\Models\Queries\Chunks\PrintTextChunk")
+     * @Type("KKMClient\Models\Queries\Chunks\PrintTextChunk")
      */
     protected $printText;
 
     /**
      * @var \KKMClient\Models\Queries\Chunks\RegisterChunk
      * @SerializedName("Register")
-     * @Type("\KKMClient\Models\Queries\Chunks\RegisterChunk")
+     * @Type("KKMClient\Models\Queries\Chunks\RegisterChunk")
      */
     protected $register;
 
     /**
      * @var \KKMClient\Models\Queries\Chunks\BarcodeChunk
      * @SerializedName("BarCode")
-     * @Type("\KKMClient\Models\Queries\Chunks\BarcodeChunk")
+     * @Type("KKMClient\Models\Queries\Chunks\BarcodeChunk")
      */
     protected $barcode;
 

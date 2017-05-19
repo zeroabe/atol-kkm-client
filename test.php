@@ -6,10 +6,10 @@ $client            = new \KKMClient\Client('10.10.5.74:5893', 'Admin', '');
 $attributes        = [
     "Command"           => "RegisterCheck",
     "NumDevice"         => 0,
-    "InnKkm"            => "",
+    "InnKkm"            => "123321321",
     "KktNumber"         => "",
     "Timeout"           => 30,
-//    "IdCommand"         => guid(),
+    "IdCommand"         => null,
     "IsFiscalCheck"     => true,
     "TypeCheck"         => \KKMClient\Models\Queries\Enums\CheckTypes::SALE,
     "CancelOpenedCheck" => true,
@@ -121,4 +121,4 @@ $attributes        = [
 ];
 
 $command = $client->resolveCommand($attributes);
-var_dump($command);
+var_dump($command->getName());

@@ -2,31 +2,42 @@
 
 namespace KKMClient\Models\Queries\Commands;
 
+use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\AccessType;
 use JMS\Serializer\Annotation\Accessor;
 use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\Expose;
+use KKMClient\Interfaces\CommandInterface;
+use KKMClient\Models\Queries\Chunks\CheckString;
+use KKMClient\Traits\CommonCommandTrait;
 
 /**
  * Class RegisterCheck
+ * @ExclusionPolicy("none")
  * @package KKMClient\Models\Queries\Commands
- * @AccessType("public_method")
  */
-class RegisterCheck extends CommonCommand
+class RegisterCheck implements CommandInterface
 {
+    use CommonCommandTrait;
+
     /**
      * @var integer
      * @SerializedName("NumDevice")
      * @Type("integer")
+     * @AccessType("public_method")
+     * @Accessor(getter="getDeviceNumber",setter="setDeviceNumber")
      */
-    protected $deviceNumber = 0;
+    private $deviceNumber;
 
     /**
      * @var string
      * @SerializedName("InnKkm")
      * @Type("string")
+     * @AccessType("public_method")
+     * @Accessor(getter="getKkmInn",setter="setKkmInn")
      */
-    protected $kkmInn = "";
+    private $kkmInn;
 
     /**
      * @var boolean
@@ -34,14 +45,14 @@ class RegisterCheck extends CommonCommand
      * @Type("boolean")
      * @Accessor(getter="isFiscal",setter="setFiscal")
      */
-    protected $fiscal;
+    private $fiscal;
 
     /**
      * @var integer
      * @SerializedName("TypeCheck")
      * @Type("integer")
      */
-    protected $checkType;
+    private $checkType;
 
     /**
      * @var boolean
@@ -49,7 +60,7 @@ class RegisterCheck extends CommonCommand
      * @Type("boolean")
      * @Accessor(getter="getOpenedCheckCancellation",setter="setOpenedCheckCancellation")
      */
-    protected $cancelOpenedCheck;
+    private $cancelOpenedCheck;
 
     /**
      * @var boolean
@@ -57,56 +68,56 @@ class RegisterCheck extends CommonCommand
      * @Type("boolean")
      * @Accessor(getter="isPrint",setter="setPrint")
      */
-    protected $print;
+    private $print;
 
     /**
      * @var string
      * @SerializedName("CashierName")
      * @Type("string")
      */
-    protected $cashierName;
+    private $cashierName;
 
     /**
      * @var integer
      * @SerializedName("TaxVariant")
      * @Type("integer")
      */
-    protected $tax;
+    private $tax;
 
     /**
      * @var array
      * @SerializedName("CheckStrings")
      * @Type("array<KKMClient\Models\Queries\Chunks\CheckString>")
      */
-    protected $strings = [];
+    private $strings = [];
 
     /**
      * @var float
      * @SerializedName("Cash")
      * @Type("float")
      */
-    protected $cash;
+    private $cash;
 
     /**
      * @var float
      * @SerializedName("CashLessType1")
      * @Type("float")
      */
-    protected $cashlessPayment1;
+    private $cashlessPayment1;
 
     /**
      * @var float
      * @SerializedName("CashLessType2")
      * @Type("float")
      */
-    protected $cashlessPayment2;
+    private $cashlessPayment2;
 
     /**
      * @var float
      * @SerializedName("CashLessType3")
      * @Type("float")
      */
-    protected $cashlessPayment3;
+    private $cashlessPayment3;
 
     public function __construct ($attributes = [])
     {
@@ -124,7 +135,7 @@ class RegisterCheck extends CommonCommand
     /**
      * @param int $deviceNumber
      */
-    public function setDeviceNumber ( int $deviceNumber )
+    public function setDeviceNumber ( int $deviceNumber = 0 )
     {
         $this->deviceNumber = $deviceNumber;
     }

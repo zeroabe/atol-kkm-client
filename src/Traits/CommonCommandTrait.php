@@ -18,22 +18,26 @@ trait CommonCommandTrait
     /**
      * @var string
      * @SerializedName("IdCommand")
+     * @Type("string")
+     * @Accessor(getter="getId",setter="setId")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      * @SerializedName("Command")
      * @Type("string")
+     * @Accessor(getter="getName",setter="setName")
      */
-    protected $name;
+    private $name;
 
     /**
      * @var integer
      * @SerializedName("Timeout")
      * @Type("integer")
+     * @Accessor(getter="getTimeOut",setter="setTimeout")
      */
-    protected $timeout;
+    private $timeout;
 
     /**
      * @return string
@@ -49,6 +53,7 @@ trait CommonCommandTrait
             $this->id = Uuid::uuid1()->toString();
         else
             $this->id = $id;
+        echo "Setting ID ". $this->id;
     }
 
     public function getName() :string

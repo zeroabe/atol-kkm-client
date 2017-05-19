@@ -76,6 +76,11 @@ class Client
         return $command;
     }
 
+    public function getDeviceList( bool $onlyActive = true )
+    {
+        $deviceQuery = $this->factory->List();
+    }
+
     /**
      *
      */

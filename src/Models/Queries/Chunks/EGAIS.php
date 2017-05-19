@@ -17,7 +17,7 @@ class EGAIS
     /**
      * @var string
      * @SerializedName("Barcode")
-     * @Type("string)
+     * @Type("string")
      */
     protected $barcode;
 
