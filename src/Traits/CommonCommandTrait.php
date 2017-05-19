@@ -56,7 +56,6 @@ trait CommonCommandTrait
             $this->id = Uuid::uuid1()->toString();
         else
             $this->id = $id;
-        echo "Setting ID ". $this->id;
     }
 
     public function getName() :string
@@ -85,7 +84,7 @@ trait CommonCommandTrait
         $this->timeout = $timeout;
     }
 
-    public function getResponseClassName()
+    public function getResponseClassName() : string
     {
         return '';
     }

@@ -2,6 +2,8 @@
 namespace KKMClient;
 
 use GuzzleHttp\Client as Http;
+use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\ResponseInterface;
 use JMS\Serializer\Exception\LogicException;
 use KKMClient\Interfaces\CommandInterface;
 use KKMClient\Factories\QueriesFactory;
@@ -93,6 +95,11 @@ class Client
 
     public function executeCommand( CommandInterface $command )
     {
+        $serializedCommand = $this->factory->serializeCommand($command);
+        var_dump($serializedCommand);
+        $response = $this->http->request('post', '', ['body' => $serializedCommand]);
+        echo $response->getStatusCode().PHP_EOL;
+        echo $response->getBody();
 
     }
 }

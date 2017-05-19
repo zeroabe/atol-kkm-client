@@ -194,15 +194,15 @@ class RegisterChunk
     }
 
     /**
-     * @return \KKMClient\Queries\Chunks\EGAIS
+     * @return \KKMClient\Models\Queries\Chunks\EGAIS
      */
-    public function getEgais (): EGAIS
+    public function getEgais ()
     {
         return $this->egais;
     }
 
     /**
-     * @param \KKMClient\Queries\Chunks\EGAIS $egais
+     * @param \KKMClient\Models\Queries\Chunks\EGAIS $egais
      */
     public function setEgais ( EGAIS $egais )
     {

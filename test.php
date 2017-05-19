@@ -1,12 +1,12 @@
 <?php
 include 'vendor/autoload.php';
 
-$client            = new \KKMClient\Client('10.10.5.74:5893', 'Admin', '');
+$client            = new \KKMClient\Client('10.10.5.232:5893/Execute/sync', 'Admin', '');
 
 $attributes        = [
     "Command"           => "RegisterCheck",
     "NumDevice"         => 0,
-    "InnKkm"            => "123321321",
+    "InnKkm"            => "",
     "KktNumber"         => "",
     "Timeout"           => 30,
     "IdCommand"         => null,
@@ -122,3 +122,4 @@ $attributes        = [
 
 $command = $client->resolveCommand($attributes);
 var_dump($command->getName());
+$client->executeCommand($command);

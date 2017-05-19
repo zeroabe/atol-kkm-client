@@ -15,21 +15,21 @@ use KKMClient\Models\Queries\Chunks\PrintTextChunk;
 class CheckString
 {
     /**
-     * @var \KKMClient\Models\Queries\Chunks\PrintTextChunk
+     * @var \KKMClient\Models\Queries\Chunks\PrintTextChunk|null
      * @SerializedName("PrintText")
      * @Type("KKMClient\Models\Queries\Chunks\PrintTextChunk")
      */
     protected $printText;
 
     /**
-     * @var \KKMClient\Models\Queries\Chunks\RegisterChunk
+     * @var \KKMClient\Models\Queries\Chunks\RegisterChunk|null
      * @SerializedName("Register")
      * @Type("KKMClient\Models\Queries\Chunks\RegisterChunk")
      */
     protected $register;
 
     /**
-     * @var \KKMClient\Models\Queries\Chunks\BarcodeChunk
+     * @var \KKMClient\Models\Queries\Chunks\BarcodeChunk|null
      * @SerializedName("BarCode")
      * @Type("KKMClient\Models\Queries\Chunks\BarcodeChunk")
      */
@@ -38,15 +38,15 @@ class CheckString
     public function __construct () { }
 
     /**
-     * @return PrintTextChunk
+     * @return \KKMClient\Models\Queries\Chunks\PrintTextChunk
      */
-    public function getPrintText (): PrintTextChunk
+    public function getPrintText ()
     {
         return $this->printText;
     }
 
     /**
-     * @param PrintTextChunk $printText
+     * @param \KKMClient\Models\Queries\Chunks\PrintTextChunk $printText
      */
     public function setPrintText ( PrintTextChunk $printText )
     {
@@ -54,34 +54,36 @@ class CheckString
     }
 
     /**
-     * @return RegisterChunk
+     * @return RegisterChunk|null
      */
-    public function getRegister (): RegisterChunk
+    public function getRegister ()
     {
         return $this->register;
     }
 
     /**
-     * @param RegisterChunk $register
+     * @param RegisterChunk|null $register
      */
-    public function setRegister ( RegisterChunk $register )
+    public function setRegister ( $register )
     {
         $this->register = $register;
     }
 
     /**
-     * @return BarcodeChunk
+     * @return BarcodeChunk|null
      */
-    public function getBarcode (): BarcodeChunk
+    public function getBarcode ()
     {
         return $this->barcode;
     }
 
     /**
-     * @param BarcodeChunk $barcode
+     * @param BarcodeChunk|null $barcode
      */
-    public function setBarcode ( BarcodeChunk $barcode )
+    public function setBarcode ( $barcode )
     {
         $this->barcode = $barcode;
     }
+
+
 }

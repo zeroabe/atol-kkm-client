@@ -56,7 +56,7 @@ class PrintTextChunk
     /**
      * @return int
      */
-    public function getFont (): int
+    public function getFont ()
     {
         return $this->font;
     }
@@ -72,7 +72,7 @@ class PrintTextChunk
     /**
      * @return int
      */
-    public function getIntensity (): int
+    public function getIntensity ()
     {
         return $this->intensity;
     }

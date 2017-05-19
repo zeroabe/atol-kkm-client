@@ -7,6 +7,7 @@ use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use KHerGe\JSON\JSON;
 use KKMClient\Exceptions\UnknownKKMCommand;
+use KKMClient\Interfaces\CommandInterface;
 use KKMClient\Models\Queries\Enums\Commands;
 
 /**
@@ -55,9 +56,7 @@ class QueriesFactory
      */
     public function __call ( $name, $arguments = null )
     {
-        $name = $this->getCommandClassName($name);
-
-        $class          = "KKMClient\\Models\\Queries\\Commands\\".$name;
+        $class = $this->getCommandClassName($name);
         if($arguments && is_array($arguments) &&  isset($arguments[0])) {
             $attributes     = $this->encodeAttributes($arguments[0], $class);
         } else {
@@ -66,6 +65,12 @@ class QueriesFactory
         $queryObject    = $this->serializer->deserialize($attributes, $class, 'json');
 
         return $queryObject;
+    }
+
+    public function serializeCommand( CommandInterface $command )
+    {
+//        $className = $this->getCommandClassName($command->getName());
+        return $this->serializer->serialize($command, 'json');
     }
 
     /**
@@ -80,8 +85,9 @@ class QueriesFactory
 
     protected function getCommandClassName($commandName)
     {
-        if (!in_array($commandName, $this->commands)) {
-            throw new UnknownKKMCommand("Command {$commandName} not implemented or not supported by KKMServer");
-        }
+//        if (!in_array($commandName, $this->commands)) {
+//            throw new UnknownKKMCommand("Command {$commandName} not implemented or not supported by KKMServer");
+//        }
+        return "KKMClient\\Models\\Queries\\Commands\\".$commandName;
     }
 }
