@@ -137,6 +137,8 @@ $attributes        = [
 //$command->addString($string);
 
 //$command = $client->resolveCommand($attributes);
-$command = new \KKMClient\Models\Queries\Commands\DeviceList();
+//$command = new \KKMClient\Models\Queries\Commands\DeviceList();
+
+$command = new \KKMClient\Models\Queries\Commands\DeviceInformation(1);
 
 $client->executeCommand($command);
