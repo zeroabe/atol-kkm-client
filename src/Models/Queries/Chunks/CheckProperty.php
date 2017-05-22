@@ -46,7 +46,7 @@ class CheckProperty
 
     public function __construct ()
     {
-        //TODO Implement this
+
     }
 
     /**

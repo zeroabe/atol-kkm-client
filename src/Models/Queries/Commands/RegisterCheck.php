@@ -9,6 +9,7 @@ use JMS\Serializer\Annotation\Accessor;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\Expose;
 use KKMClient\Interfaces\CommandInterface;
+use KKMClient\Models\Queries\Chunks\CheckProperty;
 use KKMClient\Models\Queries\Chunks\CheckString;
 use KKMClient\Traits\CommonCommandTrait;
 
@@ -83,6 +84,22 @@ class RegisterCheck implements CommandInterface
      * @Type("integer")
      */
     private $tax;
+
+    /**
+     * @var array
+     * @SerializedName("CheckProps")
+     * @Type("array<KKMClient\Models\Queries\Chunks\CheckProperty>")
+     * @Accessor(getter="getProps",setter="setProps")
+     */
+    private $props = [];
+
+    /**
+     * @var array
+     * @SerializedName("AdditionalProps")
+     * @Type("array<KKMClient\Models\Queries\Chunks\AdditionalCheckProperty>")
+     * @Accessor(getter="getAdditionalProps",setter="setAdditionalProps")
+     */
+    private $additionalProps = [];
 
     /**
      * @var array
@@ -255,6 +272,48 @@ class RegisterCheck implements CommandInterface
     /**
      * @return array
      */
+    public function getAdditionalProps (): array
+    {
+        return $this->additionalProps;
+    }
+
+    /**
+     * @param array $additionalProps
+     */
+    public function setAdditionalProps ( array $additionalProps )
+    {
+        $this->additionalProps = $additionalProps;
+    }
+
+
+
+    /**
+     * @return array
+     */
+    public function getProps (): array
+    {
+        return $this->props;
+    }
+
+    /**
+     * @param array $props
+     */
+    public function setProps ( array $props )
+    {
+        $this->props = $props;
+    }
+
+    /**
+     * @param CheckProperty $prop
+     */
+    public function addProp ( CheckProperty $prop )
+    {
+        $this->props[] = $prop;
+    }
+
+    /**
+     * @return array
+     */
     public function getStrings (): array
     {
         return $this->strings;
@@ -268,7 +327,10 @@ class RegisterCheck implements CommandInterface
         $this->strings = $strings;
     }
 
-    public function addString(CheckString $string )
+    /**
+     * @param CheckString $string
+     */
+    public function addString( CheckString $string )
     {
         $this->strings[] = $string;
     }
