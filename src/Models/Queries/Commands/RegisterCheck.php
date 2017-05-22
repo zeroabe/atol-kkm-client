@@ -127,9 +127,9 @@ class RegisterCheck implements CommandInterface
      */
     private $cashlessPayment3;
 
-    public function __construct ($attributes = [])
+    public function getName () : string
     {
-        $this->name = 'RegisterCheck';
+        return 'RegisterCheck';
     }
 
     /**

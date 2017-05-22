@@ -19,8 +19,8 @@ class OpenShift implements CommandInterface
 {
     use CommonCommandTrait;
 
-    public function __construct ()
+    public function getName (): string
     {
-        $this->name = "OpenShift";
+        return "OpenShift";
     }
 }

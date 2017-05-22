@@ -100,7 +100,7 @@ $attributes        = [
                 "Intensity" => 0, // 1-15, 0 - по настройкам ККМ
             ],
             "Register"  => [
-                "Name"       => "Шаровары мужские красные: НИМБУС-2000",
+                "Name"       => "Горе и муки от работы в слепую",
                 "Quantity"   => 3,
                 "Price"      => 100,
                 "Amount"     => 0.00,
@@ -123,7 +123,6 @@ $attributes        = [
 //$zReport = new \KKMClient\Models\Queries\Commands\ZReport();
 //$openCommand = new \KKMClient\Models\Queries\Commands\OpenShift();
 //$client->executeCommand($openCommand);
-$command = $client->resolveCommand($attributes);
 //$command = new \KKMClient\Models\Queries\Commands\RegisterCheck();
 //$string = new \KKMClient\Models\Queries\Chunks\CheckString();
 //$printText = new \KKMClient\Models\Queries\Chunks\PrintTextChunk();
@@ -136,4 +135,8 @@ $command = $client->resolveCommand($attributes);
 //$string->setBarcode($barcode);
 //$string->setPrintText($printText);
 //$command->addString($string);
+
+//$command = $client->resolveCommand($attributes);
+$command = new \KKMClient\Models\Queries\Commands\DeviceList();
+
 $client->executeCommand($command);
