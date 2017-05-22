@@ -23,22 +23,13 @@ class RegisterCheck implements CommandInterface
     use CommonCommandTrait;
 
     /**
-     * @var integer
-     * @SerializedName("NumDevice")
-     * @Type("integer")
-     * @AccessType("public_method")
-     * @Accessor(getter="getDeviceNumber",setter="setDeviceNumber")
-     */
-    private $deviceNumber;
-
-    /**
      * @var string
      * @SerializedName("InnKkm")
      * @Type("string")
      * @AccessType("public_method")
      * @Accessor(getter="getKkmInn",setter="setKkmInn")
      */
-    private $kkmInn;
+    private $kkmInn = "";
 
     /**
      * @var boolean
@@ -46,7 +37,7 @@ class RegisterCheck implements CommandInterface
      * @Type("boolean")
      * @Accessor(getter="isFiscal",setter="setFiscal")
      */
-    private $fiscal;
+    private $fiscal = false;
 
     /**
      * @var integer
@@ -61,7 +52,7 @@ class RegisterCheck implements CommandInterface
      * @Type("boolean")
      * @Accessor(getter="getOpenedCheckCancellation",setter="setOpenedCheckCancellation")
      */
-    private $cancelOpenedCheck;
+    private $cancelOpenedCheck = false;
 
     /**
      * @var boolean
@@ -69,21 +60,21 @@ class RegisterCheck implements CommandInterface
      * @Type("boolean")
      * @Accessor(getter="isPrint",setter="setPrint")
      */
-    private $print;
+    private $print = true;
 
     /**
      * @var string
      * @SerializedName("CashierName")
      * @Type("string")
      */
-    private $cashierName;
+    private $cashierName = '';
 
     /**
      * @var integer
      * @SerializedName("TaxVariant")
      * @Type("integer")
      */
-    private $tax;
+    private $tax = 0;
 
     /**
      * @var array
@@ -138,23 +129,7 @@ class RegisterCheck implements CommandInterface
 
     public function __construct ($attributes = [])
     {
-
-    }
-
-    /**
-     * @return int
-     */
-    public function getDeviceNumber (): int
-    {
-        return $this->deviceNumber;
-    }
-
-    /**
-     * @param int $deviceNumber
-     */
-    public function setDeviceNumber ( int $deviceNumber = 0 )
-    {
-        $this->deviceNumber = $deviceNumber;
+        $this->name = 'RegisterCheck';
     }
 
     /**

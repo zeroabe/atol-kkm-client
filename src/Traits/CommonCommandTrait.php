@@ -24,6 +24,15 @@ trait CommonCommandTrait
     private $id;
 
     /**
+     * @var integer
+     * @SerializedName("NumDevice")
+     * @Type("integer")
+     * @AccessType("public_method")
+     * @Accessor(getter="getDeviceNumber",setter="setDeviceNumber")
+     */
+    private $deviceNumber = 0;
+
+    /**
      * @var string
      * @SerializedName("Command")
      * @Type("string")
@@ -37,13 +46,15 @@ trait CommonCommandTrait
      * @Type("integer")
      * @Accessor(getter="getTimeOut",setter="setTimeout")
      */
-    private $timeout;
+    private $timeout = 30;
 
     /**
      * @return string
      */
     public function getId() :string
     {
+        if ( !$this->id)
+            $this->setId();
         return $this->id;
     }
 
@@ -87,5 +98,21 @@ trait CommonCommandTrait
     public function getResponseClassName() : string
     {
         return '';
+    }
+
+    /**
+     * @return int
+     */
+    public function getDeviceNumber (): int
+    {
+        return $this->deviceNumber;
+    }
+
+    /**
+     * @param int $deviceNumber
+     */
+    public function setDeviceNumber ( int $deviceNumber = 0 )
+    {
+        $this->deviceNumber = $deviceNumber;
     }
 }

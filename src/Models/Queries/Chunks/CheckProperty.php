@@ -25,7 +25,7 @@ class CheckProperty
     /**
      * @var boolean
      * @SerializedName("PrintInHeader")
-     * @Accessor(getter="isPrintInHead",setter="setPrintInHead")
+     * @Accessor(getter="isPrintInHeader",setter="setPrintInHeader")
      * @Type("boolean")
      */
     protected $printInHeader;

@@ -6,6 +6,7 @@ use JMS\Serializer\EventDispatcher\EventDispatcher;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use KHerGe\JSON\JSON;
+use KKMClient\Exceptions\NonexistentClassName;
 use KKMClient\Exceptions\UnknownKKMCommand;
 use KKMClient\Interfaces\CommandInterface;
 use KKMClient\Models\Queries\Enums\Commands;
@@ -85,9 +86,9 @@ class QueriesFactory
 
     protected function getCommandClassName($commandName)
     {
-//        if (!in_array($commandName, $this->commands)) {
-//            throw new UnknownKKMCommand("Command {$commandName} not implemented or not supported by KKMServer");
-//        }
-        return "KKMClient\\Models\\Queries\\Commands\\".$commandName;
+        $class = "KKMClient\\Models\\Queries\\Commands\\".$commandName;
+        if (!class_exists($class))
+            throw new NonexistentClassName($commandName);
+        return $class;
     }
 }
