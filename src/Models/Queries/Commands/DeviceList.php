@@ -21,13 +21,16 @@ class DeviceList implements CommandInterface
 
     /**
      * @var bool
+     * @SerializedName("Active")
+     * @Type("boolean")
+     * @Accessor(getter="isActive",setter="setActive")
      */
     private $active = true;
 
     /**
      * @var bool|null
      * @SerializedName("OnOff")
-     * @Accessor(getter="isActive",setter="setActive")
+     * @Accessor(getter="isDisabled",setter="setDisabled")
      * @Type("boolean")
      */
     private $disabled = null;

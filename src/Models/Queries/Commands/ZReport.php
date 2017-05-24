@@ -21,6 +21,6 @@ class ZReport implements CommandInterface
 
     public function getName () : string
     {
-        $this->name = "ZReport";
+         return "ZReport";
     }
 }

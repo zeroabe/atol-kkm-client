@@ -60,7 +60,7 @@ class RegisterCheck implements CommandInterface
      * @Type("boolean")
      * @Accessor(getter="isPrint",setter="setPrint")
      */
-    private $print = true;
+    private $print = false;
 
     /**
      * @var string
@@ -69,6 +69,13 @@ class RegisterCheck implements CommandInterface
      */
     private $cashierName = '';
 
+    /**
+     * @var string
+     * @SerializedName("ClientAddress")
+     * @Type("string")
+     * @Accessor(getter="getClientAddress",setter="setClientAddress")
+     */
+    private $clientAddress = '';
     /**
      * @var integer
      * @SerializedName("TaxVariant")
@@ -96,6 +103,7 @@ class RegisterCheck implements CommandInterface
      * @var array
      * @SerializedName("CheckStrings")
      * @Type("array<KKMClient\Models\Queries\Chunks\CheckString>")
+     * @Accessor(getter="getStrings",setter="setStrings")
      */
     private $strings = [];
 
@@ -209,7 +217,7 @@ class RegisterCheck implements CommandInterface
      */
     public function setPrint ( bool $print )
     {
-        $this->print = !$print;
+        $this->print = $print;
     }
 
     /**
@@ -313,7 +321,7 @@ class RegisterCheck implements CommandInterface
     /**
      * @return float
      */
-    public function getCash (): float
+    public function getCash ()
     {
         return $this->cash;
     }
@@ -329,7 +337,7 @@ class RegisterCheck implements CommandInterface
     /**
      * @return float
      */
-    public function getCashlessPayment1 (): float
+    public function getCashlessPayment1 ()
     {
         return $this->cashlessPayment1;
     }
@@ -345,7 +353,7 @@ class RegisterCheck implements CommandInterface
     /**
      * @return float
      */
-    public function getCashlessPayment2 (): float
+    public function getCashlessPayment2 ()
     {
         return $this->cashlessPayment2;
     }
@@ -361,7 +369,7 @@ class RegisterCheck implements CommandInterface
     /**
      * @return float
      */
-    public function getCashlessPayment3 (): float
+    public function getCashlessPayment3 ()
     {
         return $this->cashlessPayment3;
     }
@@ -372,5 +380,21 @@ class RegisterCheck implements CommandInterface
     public function setCashlessPayment3 ( float $cashlessPayment3 )
     {
         $this->cashlessPayment3 = $cashlessPayment3;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClientAddress (): string
+    {
+        return $this->clientAddress;
+    }
+
+    /**
+     * @param string $clientAddress
+     */
+    public function setClientAddress ( string $clientAddress )
+    {
+        $this->clientAddress = $clientAddress;
     }
 }
