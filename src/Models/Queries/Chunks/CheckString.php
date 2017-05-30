@@ -1,11 +1,11 @@
 <?php
 
-namespace KKMClient\Queries;
+namespace KKMClient\Models\Queries\Chunks;
 
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\AccessType;
-use KKMClient\Queries\Chunks\PrintTextChunk;
+use KKMClient\Models\Queries\Chunks\PrintTextChunk;
 
 /**
  * Class CheckString
@@ -15,38 +15,38 @@ use KKMClient\Queries\Chunks\PrintTextChunk;
 class CheckString
 {
     /**
-     * @var \KKMClient\Queries\Chunks\PrintTextChunk
+     * @var \KKMClient\Models\Queries\Chunks\PrintTextChunk|null
      * @SerializedName("PrintText")
-     * @Type("\KKMClient\Queries\Chunks\PrintTextChunk")
+     * @Type("KKMClient\Models\Queries\Chunks\PrintTextChunk")
      */
     protected $printText;
 
     /**
-     * @var \KKMClient\Queries\Chunks\RegisterChunk
+     * @var \KKMClient\Models\Queries\Chunks\RegisterChunk|null
      * @SerializedName("Register")
-     * @Type("\KKMClient\Queries\Chunks\RegisterChunk")
+     * @Type("KKMClient\Models\Queries\Chunks\RegisterChunk")
      */
     protected $register;
 
     /**
-     * @var \KKMClient\Queries\Chunks\BarcodeChunk
+     * @var \KKMClient\Models\Queries\Chunks\BarcodeChunk|null
      * @SerializedName("BarCode")
-     * @Type("\KKMClient\Queries\Chunks\BarcodeChunk")
+     * @Type("KKMClient\Models\Queries\Chunks\BarcodeChunk")
      */
     protected $barcode;
 
     public function __construct () { }
 
     /**
-     * @return PrintTextChunk
+     * @return \KKMClient\Models\Queries\Chunks\PrintTextChunk
      */
-    public function getPrintText (): PrintTextChunk
+    public function getPrintText ()
     {
         return $this->printText;
     }
 
     /**
-     * @param PrintTextChunk $printText
+     * @param \KKMClient\Models\Queries\Chunks\PrintTextChunk $printText
      */
     public function setPrintText ( PrintTextChunk $printText )
     {
@@ -54,34 +54,36 @@ class CheckString
     }
 
     /**
-     * @return Chunks\RegisterChunk
+     * @return RegisterChunk|null
      */
-    public function getRegister (): Chunks\RegisterChunk
+    public function getRegister ()
     {
         return $this->register;
     }
 
     /**
-     * @param Chunks\RegisterChunk $register
+     * @param RegisterChunk|null $register
      */
-    public function setRegister ( Chunks\RegisterChunk $register )
+    public function setRegister ( $register )
     {
         $this->register = $register;
     }
 
     /**
-     * @return Chunks\BarcodeChunk
+     * @return BarcodeChunk|null
      */
-    public function getBarcode (): Chunks\BarcodeChunk
+    public function getBarcode ()
     {
         return $this->barcode;
     }
 
     /**
-     * @param Chunks\BarcodeChunk $barcode
+     * @param BarcodeChunk|null $barcode
      */
-    public function setBarcode ( Chunks\BarcodeChunk $barcode )
+    public function setBarcode ( $barcode )
     {
         $this->barcode = $barcode;
     }
+
+
 }

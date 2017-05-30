@@ -1,6 +1,6 @@
 <?php
 
-namespace KKMClient\Queries;
+namespace KKMClient\Models\Queries\Chunks;
 
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\AccessType;
@@ -25,7 +25,7 @@ class CheckProperty
     /**
      * @var boolean
      * @SerializedName("PrintInHeader")
-     * @Accessor(getter="isPrintInHead",setter="setPrintInHead")
+     * @Accessor(getter="isPrintInHeader",setter="setPrintInHeader")
      * @Type("boolean")
      */
     protected $printInHeader;
@@ -46,7 +46,7 @@ class CheckProperty
 
     public function __construct ()
     {
-        //TODO Implement this
+
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace KKMClient\Queries\Chunks;
+namespace KKMClient\Models\Queries\Chunks;
 
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Type;
@@ -56,7 +56,7 @@ class PrintTextChunk
     /**
      * @return int
      */
-    public function getFont (): int
+    public function getFont ()
     {
         return $this->font;
     }
@@ -72,7 +72,7 @@ class PrintTextChunk
     /**
      * @return int
      */
-    public function getIntensity (): int
+    public function getIntensity ()
     {
         return $this->intensity;
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace KKMClient\Queries\Chunks;
+namespace KKMClient\Models\Queries\Chunks;
 
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Type;
@@ -17,7 +17,7 @@ class EGAIS
     /**
      * @var string
      * @SerializedName("Barcode")
-     * @Type("string)
+     * @Type("string")
      */
     protected $barcode;
 

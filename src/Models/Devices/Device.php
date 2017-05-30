@@ -1,12 +1,17 @@
 <?php
 
-namespace KKMClient\Devices;
+namespace KKMClient\Models\Devices;
 
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Accessor;
+use JMS\Serializer\Annotation\AccessType;
 use JMS\Serializer\Annotation\Type;
 
-
+/**
+ * Class Device
+ * @package KKMClient\Models\Devices
+ * @AccessType("public_method")
+ */
 class Device
 {
     /**

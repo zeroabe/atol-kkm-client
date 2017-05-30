@@ -1,57 +1,35 @@
 <?php
 
-namespace KKMClient\Queries;
+namespace KKMClient\Models\Queries\Commands;
 
-use KKMClient\Interfaces\CommandInterface;
-use KKMClient\Traits\CommonCommandTrait;
-use Ramsey\Uuid\Uuid;
+use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\AccessType;
 use JMS\Serializer\Annotation\Accessor;
-use KKMClient\Queries\Enums\CheckTypes;
+use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\Expose;
+use KKMClient\Interfaces\CommandInterface;
+use KKMClient\Models\Queries\Chunks\CheckProperty;
+use KKMClient\Models\Queries\Chunks\CheckString;
+use KKMClient\Traits\CommonCommandTrait;
 
 /**
- * Class Command
- * @package KKMClient\Queries
- * @AccessType("public_method")
+ * Class RegisterCheck
+ * @ExclusionPolicy("none")
+ * @package KKMClient\Models\Queries\Commands
  */
-class Command implements CommandInterface
+class RegisterCheck implements CommandInterface
 {
     use CommonCommandTrait;
 
     /**
      * @var string
-     * @SerializedName("IdCommand")
-     */
-    protected $id;
-
-    /**
-     * @var string
-     * @SerializedName("Command")
-     * @Type("string")
-     */
-    protected $name;
-
-    /**
-     * @var integer
-     * @SerializedName("NumDevice")
-     * @Type("integer")
-     */
-    protected $deviceNumber;
-
-    /**
-     * @var string
      * @SerializedName("InnKkm")
      * @Type("string")
+     * @AccessType("public_method")
+     * @Accessor(getter="getKkmInn",setter="setKkmInn")
      */
-    protected $kkmInn;
-
-    /**
-     * @var integer
-     * @SerializedName("Timeout")
-     * @Type("integer")
-     */
-    protected $timeout;
+    private $kkmInn = "";
 
     /**
      * @var boolean
@@ -59,22 +37,22 @@ class Command implements CommandInterface
      * @Type("boolean")
      * @Accessor(getter="isFiscal",setter="setFiscal")
      */
-    protected $fiscal;
+    private $fiscal = false;
 
     /**
      * @var integer
      * @SerializedName("TypeCheck")
      * @Type("integer")
      */
-    protected $checkType;
+    private $checkType;
 
     /**
      * @var boolean
      * @SerializedName("CancelOpenedCheck")
      * @Type("boolean")
-     * @Accessor(getter="getOpenedCheckCancellation",setter="setOpenedCheckCancellation))
+     * @Accessor(getter="getOpenedCheckCancellation",setter="setOpenedCheckCancellation")
      */
-    protected $cancelOpenedCheck;
+    private $cancelOpenedCheck = false;
 
     /**
      * @var boolean
@@ -82,73 +60,84 @@ class Command implements CommandInterface
      * @Type("boolean")
      * @Accessor(getter="isPrint",setter="setPrint")
      */
-    protected $print;
+    private $print = false;
 
     /**
      * @var string
      * @SerializedName("CashierName")
      * @Type("string")
      */
-    protected $cashierName;
+    private $cashierName = '';
 
+    /**
+     * @var string
+     * @SerializedName("ClientAddress")
+     * @Type("string")
+     * @Accessor(getter="getClientAddress",setter="setClientAddress")
+     */
+    private $clientAddress = '';
     /**
      * @var integer
      * @SerializedName("TaxVariant")
      * @Type("integer")
      */
-    protected $tax;
+    private $tax = 0;
+
+    /**
+     * @var array
+     * @SerializedName("CheckProps")
+     * @Type("array<KKMClient\Models\Queries\Chunks\CheckProperty>")
+     * @Accessor(getter="getProps",setter="setProps")
+     */
+    private $props = [];
+
+    /**
+     * @var array
+     * @SerializedName("AdditionalProps")
+     * @Type("array<KKMClient\Models\Queries\Chunks\AdditionalCheckProperty>")
+     * @Accessor(getter="getAdditionalProps",setter="setAdditionalProps")
+     */
+    private $additionalProps = [];
 
     /**
      * @var array
      * @SerializedName("CheckStrings")
-     * @Type("array<\KKMClient\Queries\CheckString>")
+     * @Type("array<KKMClient\Models\Queries\Chunks\CheckString>")
+     * @Accessor(getter="getStrings",setter="setStrings")
      */
-    protected $strings = [];
+    private $strings = [];
 
     /**
      * @var float
      * @SerializedName("Cash")
      * @Type("float")
      */
-    protected $cash;
+    private $cash;
 
     /**
      * @var float
      * @SerializedName("CashLessType1")
      * @Type("float")
      */
-    protected $cashlessPayment1;
+    private $cashlessPayment1;
 
     /**
      * @var float
      * @SerializedName("CashLessType2")
      * @Type("float")
      */
-    protected $cashlessPayment2;
+    private $cashlessPayment2;
 
     /**
      * @var float
      * @SerializedName("CashLessType3")
      * @Type("float")
      */
-    protected $cashlessPayment3;
+    private $cashlessPayment3;
 
-    public function __construct () { }
-
-    /**
-     * @return int
-     */
-    public function getDeviceNumber (): int
+    public function getName () : string
     {
-        return $this->deviceNumber;
-    }
-
-    /**
-     * @param int $deviceNumber
-     */
-    public function setDeviceNumber ( int $deviceNumber )
-    {
-        $this->deviceNumber = $deviceNumber;
+        return 'RegisterCheck';
     }
 
     /**
@@ -165,22 +154,6 @@ class Command implements CommandInterface
     public function setKkmInn ( string $kkmInn )
     {
         $this->kkmInn = $kkmInn;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTimeout (): int
-    {
-        return $this->timeout;
-    }
-
-    /**
-     * @param int $timeout
-     */
-    public function setTimeout ( int $timeout )
-    {
-        $this->timeout = $timeout;
     }
 
     /**
@@ -244,7 +217,7 @@ class Command implements CommandInterface
      */
     public function setPrint ( bool $print )
     {
-        $this->print = !$print;
+        $this->print = $print;
     }
 
     /**
@@ -282,6 +255,48 @@ class Command implements CommandInterface
     /**
      * @return array
      */
+    public function getAdditionalProps (): array
+    {
+        return $this->additionalProps;
+    }
+
+    /**
+     * @param array $additionalProps
+     */
+    public function setAdditionalProps ( array $additionalProps )
+    {
+        $this->additionalProps = $additionalProps;
+    }
+
+
+
+    /**
+     * @return array
+     */
+    public function getProps (): array
+    {
+        return $this->props;
+    }
+
+    /**
+     * @param array $props
+     */
+    public function setProps ( array $props )
+    {
+        $this->props = $props;
+    }
+
+    /**
+     * @param CheckProperty $prop
+     */
+    public function addProp ( CheckProperty $prop )
+    {
+        $this->props[] = $prop;
+    }
+
+    /**
+     * @return array
+     */
     public function getStrings (): array
     {
         return $this->strings;
@@ -295,7 +310,10 @@ class Command implements CommandInterface
         $this->strings = $strings;
     }
 
-    public function addString(CheckString $string )
+    /**
+     * @param CheckString $string
+     */
+    public function addString( CheckString $string )
     {
         $this->strings[] = $string;
     }
@@ -303,7 +321,7 @@ class Command implements CommandInterface
     /**
      * @return float
      */
-    public function getCash (): float
+    public function getCash ()
     {
         return $this->cash;
     }
@@ -319,7 +337,7 @@ class Command implements CommandInterface
     /**
      * @return float
      */
-    public function getCashlessPayment1 (): float
+    public function getCashlessPayment1 ()
     {
         return $this->cashlessPayment1;
     }
@@ -335,7 +353,7 @@ class Command implements CommandInterface
     /**
      * @return float
      */
-    public function getCashlessPayment2 (): float
+    public function getCashlessPayment2 ()
     {
         return $this->cashlessPayment2;
     }
@@ -351,7 +369,7 @@ class Command implements CommandInterface
     /**
      * @return float
      */
-    public function getCashlessPayment3 (): float
+    public function getCashlessPayment3 ()
     {
         return $this->cashlessPayment3;
     }
@@ -362,5 +380,21 @@ class Command implements CommandInterface
     public function setCashlessPayment3 ( float $cashlessPayment3 )
     {
         $this->cashlessPayment3 = $cashlessPayment3;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClientAddress (): string
+    {
+        return $this->clientAddress;
+    }
+
+    /**
+     * @param string $clientAddress
+     */
+    public function setClientAddress ( string $clientAddress )
+    {
+        $this->clientAddress = $clientAddress;
     }
 }

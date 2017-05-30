@@ -1,11 +1,11 @@
 <?php
 
-namespace KKMClient\Queries\Chunks;
+namespace KKMClient\Models\Queries\Chunks;
 
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\AccessType;
-use KKMClient\Queries\Chunks\EGAIS;
+use KKMClient\Models\Queries\Chunks\EGAIS;
 
 
 /**
@@ -72,9 +72,9 @@ class RegisterChunk
     protected $ean13;
 
     /**
-     * @var \KKMClient\Queries\Chunks\EGAIS
+     * @var \KKMClient\Models\Queries\Chunks\EGAIS
      * @SerializedName("EGAIS")
-     * @Type("KKMClient\Queries\Chunks\EGAIS")
+     * @Type("KKMClient\Models\Queries\Chunks\EGAIS")
      * Данные для ЕГАИС.
      */
     protected $egais;
@@ -194,15 +194,15 @@ class RegisterChunk
     }
 
     /**
-     * @return \KKMClient\Queries\Chunks\EGAIS
+     * @return \KKMClient\Models\Queries\Chunks\EGAIS
      */
-    public function getEgais (): EGAIS
+    public function getEgais ()
     {
         return $this->egais;
     }
 
     /**
-     * @param \KKMClient\Queries\Chunks\EGAIS $egais
+     * @param \KKMClient\Models\Queries\Chunks\EGAIS $egais
      */
     public function setEgais ( EGAIS $egais )
     {

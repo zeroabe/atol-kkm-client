@@ -1,6 +1,6 @@
 <?php
 
-namespace KKMClient\Queries\Enums;
+namespace KKMClient\Models\Queries\Enums;
 
 
 class PropertyTags
