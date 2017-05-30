@@ -39,9 +39,15 @@ class QueriesFactory
     protected $commands = [];
 
     /**
-     * QueriesFactory constructor.
+     * @var string
      */
-    public function __construct ()
+    protected $format = 'json';
+
+    /**
+     * QueriesFactory constructor.
+     * @param $format string    Format for serializing and deserializing objects
+     */
+    public function __construct ( string $format = 'json' )
     {
         $this->serializer   = SerializerBuilder::create()->configureListeners(function(EventDispatcher $dispatcher) {
         })->build();
@@ -59,7 +65,7 @@ class QueriesFactory
     {
         $class = $this->getCommandClassName($name);
         if($arguments && is_array($arguments) &&  isset($arguments[0])) {
-            $attributes     = $this->encodeAttributes($arguments[0], $class);
+            $attributes     = $this->encodeAttributes($arguments[0]);
         } else {
             $attributes = [];
         }
@@ -74,12 +80,26 @@ class QueriesFactory
         return $this->serializer->serialize($command, 'json');
     }
 
+    public function deSerializeResponse( string $body, string $class )
+    {
+        $className = "KKMClient\\Models\\Queries\\Commands\\".$class;
+        if (!class_exists($class))
+            throw new NonexistentClassName($class);
+
+        return $this->serializer->deserialize($body, $className, 'json');
+    }
+
+    private function fromString( string $data )
+    {
+
+    }
+
     /**
      * @param $attributes
      *
      * @return string
      */
-    protected function encodeAttributes( $attributes)
+    protected function encodeAttributes( $attributes )
     {
         return $this->json->encode($attributes);
     }

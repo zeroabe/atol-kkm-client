@@ -3,6 +3,7 @@ namespace KKMClient;
 
 use GuzzleHttp\Client as Http;
 use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Response;
 use KKMClient\Exceptions\UnknownKKMCommand;
 use Psr\Http\Message\ResponseInterface;
 use JMS\Serializer\Exception\LogicException;
@@ -101,7 +102,8 @@ class Client
         $serializedCommand = $this->factory->serializeCommand($command);
 
         $response = $this->http->request('post', '', ['body' => $serializedCommand]);
-        echo $response->getStatusCode().PHP_EOL;
-        echo $response->getBody();
+
+        if ( $response && $response->getStatusCode() == 200 )
+            return $this->factory->deSerializeResponse($response->getBody(), $command->getResponseClassName());
     }
 }

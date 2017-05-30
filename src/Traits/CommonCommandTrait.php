@@ -95,11 +95,6 @@ trait CommonCommandTrait
         $this->timeout = $timeout;
     }
 
-    public function getResponseClassName() : string
-    {
-        return '';
-    }
-
     /**
      * @return int
      */
@@ -114,5 +109,10 @@ trait CommonCommandTrait
     public function setDeviceNumber ( int $deviceNumber = 0 )
     {
         $this->deviceNumber = $deviceNumber;
+    }
+
+    public function getResponseClassName() : string
+    {
+       return ''.(new \ReflectionClass($this))->getShortName();
     }
 }

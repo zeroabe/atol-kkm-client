@@ -18,14 +18,14 @@ $attributes        = [
     "CashierName"       => "Kазакова Н.А.",
     "ClientAddress"     => "client@server.ru",
     "TaxVariant"        => "",
-//    "CheckProps"        => [
-//        [ "Print" => true, "PrintInHeader" => true, "Teg" => 1005, "Prop" => "I need your bike... and KKM too" ],
+    "CheckProps"        => [
+        [ "Print" => false, "PrintInHeader" => false, "Teg" => 1057, "Prop" => "АГЕНТ" ],
 //        [ "Print" => true, "PrintInHeader" => true, "Teg" => 1010, "Prop" => 10.25 ],
 //        [ "Print" => true, "PrintInHeader" => true, "Teg" => 1073, "Prop" => "8(985)775-44-61" ],
-//    ],
+    ],
 //    "AdditionalProps"   => [
 //        [ "Print" => true, "PrintInHeader" => false, "NameProp" => "Дата транзакции", "Prop" => "10.11.2016 10:30" ],
-//    ],
+//    ]
     "ClientId"          => "23FG4GV4D2956",
     "KPP"               => "782543005",
     "CheckStrings"      => [
