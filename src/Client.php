@@ -101,7 +101,6 @@ class Client
         $response = $this->http->request('post', '', ['body' => $serializedCommand]);
 
         if ( $response && $response->getStatusCode() == 200 ) {
-            echo $response->getBody();
             return $this->factory->deSerializeResponse($response->getBody(), $command->getResponseClassName());
         }
     }
