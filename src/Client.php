@@ -2,10 +2,7 @@
 namespace KKMClient;
 
 use GuzzleHttp\Client as Http;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
 use KKMClient\Exceptions\UnknownKKMCommand;
-use Psr\Http\Message\ResponseInterface;
 use JMS\Serializer\Exception\LogicException;
 use KKMClient\Interfaces\CommandInterface;
 use KKMClient\Factories\QueriesFactory;
@@ -89,9 +86,9 @@ class Client
         return $command;
     }
 
-    public function getDeviceList( bool $onlyActive = true )
+    public function getDeviceList()
     {
-        $deviceQuery = $this->factory->List();
+        return $this->factory->DeviceList();
     }
 
 
@@ -103,7 +100,9 @@ class Client
 
         $response = $this->http->request('post', '', ['body' => $serializedCommand]);
 
-        if ( $response && $response->getStatusCode() == 200 )
+        if ( $response && $response->getStatusCode() == 200 ) {
+            echo $response->getBody();
             return $this->factory->deSerializeResponse($response->getBody(), $command->getResponseClassName());
+        }
     }
 }

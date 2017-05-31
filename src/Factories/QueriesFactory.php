@@ -82,8 +82,8 @@ class QueriesFactory
 
     public function deSerializeResponse( string $body, string $class )
     {
-        $className = "KKMClient\\Models\\Queries\\Commands\\".$class;
-        if (!class_exists($class))
+        $className = "KKMClient\\Models\\Responses\\".$class;
+        if (!class_exists($className))
             throw new NonexistentClassName($class);
 
         return $this->serializer->deserialize($body, $className, 'json');

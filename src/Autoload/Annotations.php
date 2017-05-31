@@ -20,7 +20,7 @@ class Annotations {
         if(is_dir($basePath.DIRECTORY_SEPARATOR.'vendor')) {
             $projectRoot = $basePath;
         } else {
-            $basePath = dirname(dirname($basePath));
+            $basePath = dirname(dirname(dirname($basePath)));
             if(is_dir($basePath.DIRECTORY_SEPARATOR.'vendor')) {
                 $projectRoot = $basePath;
             }

@@ -3,23 +3,36 @@
 namespace KKMClient\Traits;
 
 
+use JMS\Serializer\Annotation\SerializedName;
+use JMS\Serializer\Annotation\AccessType;
+use JMS\Serializer\Annotation\Accessor;
+use JMS\Serializer\Annotation\Type;
+
+/**
+ * Class CommonResponseTrait
+ * @package KKMClient\Traits
+ * @AccessorType("public_method")
+ */
 trait CommonResponseTrait
 {
     /**
      * @var string
-     *
+     * @SerializedName("Command")
+     * @Type("string")
      */
     private $name;
 
     /**
      * @var string
-     *
+     * @SerializedName("Error")
+     * @Type("string")
      */
     private $error;
 
     /**
      * @var integer
-     *
+     * @SerializedName("status")
+     * @Type("integer")
      */
     private $status;
 

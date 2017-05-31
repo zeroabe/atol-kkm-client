@@ -90,6 +90,7 @@ class Device
      * @var string
      * @SerializedName("INN")
      * @Accessor(getter="getInn",setter="setInn")
+     * @Type("string")
      */
     protected $inn;
 
@@ -137,6 +138,7 @@ class Device
      * @var string
      * @SerializedName("FN_DateEnd")
      * @Accessor(getter="getFNDateEnd",setter="setFNDateEnd")
+     * @Type("DateTime<'Y-m-d\TH:i:s'>")
      */
     protected $FNDateEnd;
 
@@ -151,7 +153,7 @@ class Device
     /**
      * @var boolean
      * @SerializedName("FN_IsFiscal")
-     * @Accessor(getter="isFNIsFiscal",setter="setFNIsFiscal)
+     * @Accessor(getter="isFNIsFiscal",setter="setFNIsFiscal")
      * @Type("boolean")
      */
     protected $FNIsFiscal;
@@ -407,17 +409,17 @@ class Device
     }
 
     /**
-     * @return string
+     * @return \DateTime|string
      */
-    public function getFNDateEnd (): string
+    public function getFNDateEnd (): \DateTime
     {
         return $this->FNDateEnd;
     }
 
     /**
-     * @param string $FNDateEnd
+     * @param \DateTime $FNDateEnd
      */
-    public function setFNDateEnd ( string $FNDateEnd )
+    public function setFNDateEnd ( \DateTime $FNDateEnd )
     {
         $this->FNDateEnd = $FNDateEnd;
     }
@@ -465,7 +467,7 @@ class Device
     /**
      * @param bool $outOfPaper
      */
-    public function setPaperOut ( bool $outOfPaper )
+    public function setOutOfPaper ( bool $outOfPaper )
     {
         $this->outOfPaper = $outOfPaper;
     }
