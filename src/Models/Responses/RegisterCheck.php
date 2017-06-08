@@ -23,7 +23,7 @@ class RegisterCheck implements ResponseInterface
 
     /**
      * @var string
-     * @Type("string)
+     * @Type("string")
      * @SerializedName("URL")
      */
     protected $url;

@@ -31,7 +31,7 @@ trait CommonResponseTrait
 
     /**
      * @var integer
-     * @SerializedName("status")
+     * @SerializedName("Status")
      * @Type("integer")
      */
     private $status;

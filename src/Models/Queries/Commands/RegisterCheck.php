@@ -24,6 +24,14 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @var string
+     * @SerializedName("KktNumber")
+     * @Type("string")
+     * @Accessor(getter="getFactoryNumber",setter="setFactoryNumber")
+     */
+    private $factoryNumber = "";
+
+    /**
+     * @var string
      * @SerializedName("InnKkm")
      * @Type("string")
      * @AccessType("public_method")
@@ -154,6 +162,7 @@ class RegisterCheck implements CommandInterface
     public function setKkmInn ( string $kkmInn )
     {
         $this->kkmInn = $kkmInn;
+        return $this;
     }
 
     /**
@@ -170,6 +179,7 @@ class RegisterCheck implements CommandInterface
     public function setFiscal ( bool $isFiscal )
     {
         $this->fiscal = $isFiscal;
+        return $this;
     }
 
     /**
@@ -186,6 +196,7 @@ class RegisterCheck implements CommandInterface
     public function setCheckType ( int $checkType )
     {
         $this->checkType = $checkType;
+        return $this;
     }
 
     /**
@@ -202,6 +213,7 @@ class RegisterCheck implements CommandInterface
     public function setOpenedCheckCancellation ( bool $cancelOpenedCheck )
     {
         $this->cancelOpenedCheck = $cancelOpenedCheck;
+        return $this;
     }
 
     /**
@@ -218,6 +230,7 @@ class RegisterCheck implements CommandInterface
     public function setPrint ( bool $print )
     {
         $this->print = $print;
+        return $this;
     }
 
     /**
@@ -234,6 +247,7 @@ class RegisterCheck implements CommandInterface
     public function setCashierName ( string $cashierName )
     {
         $this->cashierName = $cashierName;
+        return $this;
     }
 
     /**
@@ -250,6 +264,7 @@ class RegisterCheck implements CommandInterface
     public function setTax ( int $tax )
     {
         $this->tax = $tax;
+        return $this;
     }
 
     /**
@@ -266,6 +281,7 @@ class RegisterCheck implements CommandInterface
     public function setAdditionalProps ( array $additionalProps )
     {
         $this->additionalProps = $additionalProps;
+        return $this;
     }
 
 
@@ -284,6 +300,7 @@ class RegisterCheck implements CommandInterface
     public function setProps ( array $props )
     {
         $this->props = $props;
+        return $this;
     }
 
     /**
@@ -292,6 +309,7 @@ class RegisterCheck implements CommandInterface
     public function addProp ( CheckProperty $prop )
     {
         $this->props[] = $prop;
+        return $this;
     }
 
     /**
@@ -308,6 +326,7 @@ class RegisterCheck implements CommandInterface
     public function setStrings ( array $strings )
     {
         $this->strings = $strings;
+        return $this;
     }
 
     /**
@@ -316,6 +335,7 @@ class RegisterCheck implements CommandInterface
     public function addString( CheckString $string )
     {
         $this->strings[] = $string;
+        return $this;
     }
 
     /**
@@ -332,6 +352,7 @@ class RegisterCheck implements CommandInterface
     public function setCash ( float $cash )
     {
         $this->cash = $cash;
+        return $this;
     }
 
     /**
@@ -348,6 +369,7 @@ class RegisterCheck implements CommandInterface
     public function setCashlessPayment1 ( float $cashlessPayment1 )
     {
         $this->cashlessPayment1 = $cashlessPayment1;
+        return $this;
     }
 
     /**
@@ -364,6 +386,7 @@ class RegisterCheck implements CommandInterface
     public function setCashlessPayment2 ( float $cashlessPayment2 )
     {
         $this->cashlessPayment2 = $cashlessPayment2;
+        return $this;
     }
 
     /**
@@ -380,6 +403,7 @@ class RegisterCheck implements CommandInterface
     public function setCashlessPayment3 ( float $cashlessPayment3 )
     {
         $this->cashlessPayment3 = $cashlessPayment3;
+        return $this;
     }
 
     /**
@@ -396,5 +420,23 @@ class RegisterCheck implements CommandInterface
     public function setClientAddress ( string $clientAddress )
     {
         $this->clientAddress = $clientAddress;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFactoryNumber (): string
+    {
+        return $this->factoryNumber;
+    }
+
+    /**
+     * @param string $deviceNumber
+     */
+    public function setFactoryNumber ( string $deviceNumber )
+    {
+        $this->factoryNumber = $deviceNumber;
+        return $this;
     }
 }
