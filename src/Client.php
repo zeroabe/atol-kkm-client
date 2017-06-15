@@ -28,10 +28,6 @@ class Client
 
     private $commands;
 
-    private $devices;
-
-    private $responses;
-
     /**
      * @var QueriesFactory
      */
@@ -40,16 +36,25 @@ class Client
     /**
      * Client constructor.
      * @param $url  string  url ККМ сервера
-     * @param $user string  Логин пользователя сервера ККМ
-     * @param $pass string  Пароль пользователя сервера ККМ
+     * @param array $options
+     * @param bool $async
+     * @throws \Exception
      */
-    public function __construct (string $url, string $user, string $pass)
+    public function __construct (string $url, array $options, bool $async = true)
     {
+        $url .= '/Execute/';
+        if($async) {
+            $url .= 'async';
+        }
+        $url .= 'sync';
         $this->url = $url;
+        if(!isset($options['user']) || !$options['user'])
+            throw new \Exception("User name has to be provided in options array");
+        if(!isset($options['pass'])) $options['pass'] = '';
         $config = [
             'base_uri' => $url,
             'auth' => [
-                $user, $pass
+                $options['user'], $options['pass']
             ]
         ];
         $this->http = new Http($config);
@@ -85,12 +90,6 @@ class Client
         $command = $this->factory->$name($attributes);
         return $command;
     }
-
-    public function getDeviceList()
-    {
-        return $this->factory->DeviceList();
-    }
-
 
     public function executeCommand( CommandInterface $command )
     {
