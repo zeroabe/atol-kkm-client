@@ -158,6 +158,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param string $kkmInn
+     * @return $this
      */
     public function setKkmInn ( string $kkmInn )
     {
@@ -175,6 +176,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param bool $isFiscal
+     * @return $this
      */
     public function setFiscal ( bool $isFiscal )
     {
@@ -192,6 +194,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param int $checkType
+     * @return $this
      */
     public function setCheckType ( int $checkType )
     {
@@ -209,6 +212,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param bool $cancelOpenedCheck
+     * @return $this
      */
     public function setOpenedCheckCancellation ( bool $cancelOpenedCheck )
     {
@@ -226,6 +230,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param bool $print
+     * @return $this
      */
     public function setPrint ( bool $print )
     {
@@ -243,6 +248,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param string $cashierName
+     * @return $this
      */
     public function setCashierName ( string $cashierName )
     {
@@ -260,6 +266,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param int $tax
+     * @return $this
      */
     public function setTax ( int $tax )
     {
@@ -277,6 +284,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param array $additionalProps
+     * @return $this
      */
     public function setAdditionalProps ( array $additionalProps )
     {
@@ -296,6 +304,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param array $props
+     * @return $this
      */
     public function setProps ( array $props )
     {
@@ -305,6 +314,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param CheckProperty $prop
+     * @return $this
      */
     public function addProp ( CheckProperty $prop )
     {
@@ -322,6 +332,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param array $strings
+     * @return $this
      */
     public function setStrings ( array $strings )
     {
@@ -331,6 +342,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param CheckString $string
+     * @return $this
      */
     public function addString( CheckString $string )
     {
@@ -348,6 +360,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param float $cash
+     * @return $this
      */
     public function setCash ( float $cash )
     {
@@ -365,6 +378,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param float $cashlessPayment1
+     * @return $this
      */
     public function setCashlessPayment1 ( float $cashlessPayment1 )
     {
@@ -382,6 +396,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param float $cashlessPayment2
+     * @return $this
      */
     public function setCashlessPayment2 ( float $cashlessPayment2 )
     {
@@ -399,6 +414,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param float $cashlessPayment3
+     * @return $this
      */
     public function setCashlessPayment3 ( float $cashlessPayment3 )
     {
@@ -416,6 +432,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param string $clientAddress
+     * @return $this
      */
     public function setClientAddress ( string $clientAddress )
     {
@@ -433,6 +450,7 @@ class RegisterCheck implements CommandInterface
 
     /**
      * @param string $deviceNumber
+     * @return $this
      */
     public function setFactoryNumber ( string $deviceNumber )
     {

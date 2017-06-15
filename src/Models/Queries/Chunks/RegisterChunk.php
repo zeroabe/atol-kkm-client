@@ -180,7 +180,7 @@ class RegisterChunk
     /**
      * @return string
      */
-    public function getEan13 (): string
+    public function getEan13 ()
     {
         return $this->ean13;
     }
