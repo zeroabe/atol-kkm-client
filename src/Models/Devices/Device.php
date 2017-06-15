@@ -32,7 +32,7 @@ class Device
 
     /**
      * @var boolean
-     * @SerializedName("OnOf")
+     * @SerializedName("OnOff")
      * @Accessor(getter="geState",setter="setState")
      * @Type("boolean")
      */

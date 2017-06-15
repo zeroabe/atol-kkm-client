@@ -60,6 +60,7 @@ trait CommonCommandTrait
 
     /**
      * @param string|null $id
+     * @return $this
      */
     public function setId( string $id = null )
     {
@@ -67,6 +68,7 @@ trait CommonCommandTrait
             $this->id = Uuid::uuid1()->toString();
         else
             $this->id = $id;
+        return $this;
     }
 
     public function getName() :string
@@ -77,6 +79,7 @@ trait CommonCommandTrait
     public function setName( string $name )
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -89,10 +92,12 @@ trait CommonCommandTrait
 
     /**
      * @param int $timeout
+     * @return $this
      */
     public function setTimeout ( int $timeout )
     {
         $this->timeout = $timeout;
+        return $this;
     }
 
     /**
@@ -105,10 +110,12 @@ trait CommonCommandTrait
 
     /**
      * @param int $deviceNumber
+     * @return $this
      */
     public function setDeviceNumber ( int $deviceNumber = 0 )
     {
         $this->deviceNumber = $deviceNumber;
+        return $this;
     }
 
     public function getResponseClassName() : string

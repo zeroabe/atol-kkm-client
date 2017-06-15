@@ -44,8 +44,44 @@ class DeviceList implements ResponseInterface
         $this->devices = $devices;
     }
 
+    /**
+     * @param Device $device
+     */
     public function addDevice( Device $device )
     {
         $this->devices[] = $device;
+    }
+
+    /**
+     * @param $index
+     * @return mixed|null
+     */
+    public function getDevice( $index )
+    {
+        if(isset ($this->devices[$index])) {
+            return $this->devices[$index];
+        }
+        return null;
+    }
+
+    /**
+     * @param $index
+     */
+    public function removeDevice( $index)
+    {
+        if(isset ($this->devices[$index])) {
+            unset($this->devices[$index]);
+        }
+    }
+
+    /**
+     * @return Device
+     */
+    public function getFirstActive() : Device
+    {
+        foreach ($this->devices as $device) {
+            if($device->getStatus()) return $device;
+        }
+        return null;
     }
 }
