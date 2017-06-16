@@ -67,7 +67,7 @@ class DeviceList implements ResponseInterface
     /**
      * @param $index
      */
-    public function removeDevice( $index)
+    public function removeDevice($index)
     {
         if(isset ($this->devices[$index])) {
             unset($this->devices[$index]);
@@ -83,5 +83,13 @@ class DeviceList implements ResponseInterface
             if($device->getStatus()) return $device;
         }
         return null;
+    }
+
+    public function getNextActive(Device $device = null) : Device
+    {
+        $device = $device ? $device : $this->getFirstActive();
+        $index = array_search($device, $this->devices);
+        $this->removeDevice($index);
+        return $this->getFirstActive();
     }
 }
