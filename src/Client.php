@@ -7,7 +7,6 @@ use JMS\Serializer\Exception\LogicException;
 use KKMClient\Interfaces\CommandInterface;
 use KKMClient\Factories\QueriesFactory;
 use Autoload\Annotations;
-use KKMClient\Models\Devices\Device;
 
 /**
  * Class Client
@@ -26,8 +25,6 @@ class Client
      */
     private $url;
 
-    private $commands;
-
     /**
      * @var QueriesFactory
      */
@@ -40,13 +37,24 @@ class Client
      * @param bool $async
      * @throws \Exception
      */
-    public function __construct (string $url, array $options, bool $async = true)
+    public function __construct (string $url, array $options, bool $async = false)
     {
-        $url .= '/Execute/';
-        if($async) {
-            $url .= 'async';
+        $pattern = '~(https?)?:?/?/?([\D|\d]*):(\d*)/?(Execute)?/?(a?sync)?~';
+        preg_match_all($pattern, $url, $matches);
+        if ($matches[0] && $matches[0][0]) {
+            $url = $matches[1][0] ? $matches[1][0] : 'http';
+            $url .= '://';
+            $url .= $matches[2][0] ? $matches[2][0] : 'localhost';
+            $url .= $matches[3][0] ? ':'.$matches[3][0] : '';
+            $url .= $matches[4][0] ? '/'.$matches[4][0] : '/Execute';
+            if($async) {
+                $url .= '/async/';
+            } elseif(!$async && !$matches[5] && !$matches[5][0]) {
+                $url .= '/sync/';
+            } elseif (!$async && $matches[5] && $matches[5][0]) {
+                $url .= '/'.$matches[5][0].'/';
+            }
         }
-        $url .= 'sync';
         $this->url = $url;
         if(!isset($options['user']) || !$options['user'])
             throw new \Exception("User name has to be provided in options array");
@@ -60,21 +68,6 @@ class Client
         $this->http = new Http($config);
         $this->factory = new QueriesFactory();
         Annotations::registry();
-    }
-
-    /**
-     * @param CommandInterface $command
-     */
-    protected function addCommand( CommandInterface $command)
-    {
-        if(!isset($this->commands[$command->getName()]))
-            $this->commands[$command->getName()] = [];
-        $this->commands[$command->getName()][$command->getId()] = $command;
-    }
-
-    protected function addDevice( Device $device )
-    {
-
     }
 
     /**
