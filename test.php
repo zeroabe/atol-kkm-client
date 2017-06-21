@@ -1,17 +1,17 @@
 <?php
 include 'vendor/autoload.php';
 
-$client            = new \KKMClient\Client('10.10.5.224:5893/Execute/sync', 'Admin', '');
+$client            = new \KKMClient\Client('10.10.5.235:5893', ['user' => 'Admin'], true);
 
 $attributes        = [
     "Command"           => "RegisterCheck",
-    "NumDevice"         => 0,
+    "NumDevice"         => 2,
     "InnKkm"            => "",
     "KktNumber"         => "",
     "Timeout"           => 30,
     "IdCommand"         => null,
     "IsFiscalCheck"     => true,
-    "TypeCheck"         => \KKMClient\Models\Queries\Enums\CheckTypes::SALE,
+    "TypeCheck"         => \KKMClient\Models\Queries\Enums\CheckTypes::REFUND,
     "CancelOpenedCheck" => true,
     "NotPrint"          => false,
     "NumberCopies"      => 0,
@@ -120,7 +120,6 @@ $attributes        = [
     "CashLessType3"     => 0
 ];
 //$xReport = new \KKMClient\Models\Queries\Commands\XReport();
-//$command = new \KKMClient\Models\Queries\Commands\ZReport();
 //$command = new \KKMClient\Models\Queries\Commands\OpenShift();
 //$client->executeCommand($openCommand);
 
@@ -138,7 +137,9 @@ $attributes        = [
 //
 //$command->addString($string);
 
-//$command = $client->resolveCommand($attributes);
+$command = $client->resolveCommand($attributes);
+//$zReport = new \KKMClient\Models\Queries\Commands\ZReport();
+//$zReport->setDeviceNumber(1);
 //$command = new \KKMClient\Models\Queries\Commands\DeviceList();
 
 //$command = new \KKMClient\Models\Queries\Commands\DeviceInformation(1);
@@ -147,12 +148,22 @@ $attributes        = [
 //var_dump($command->getStrings());
 //$command = new \KKMClient\Models\Queries\Commands\GetLineLength();
 
-$command = new \KKMClient\Models\Queries\Commands\DeviceList();
+//$command = new \KKMClient\Models\Queries\Commands\DeviceList();
 $result = $client->executeCommand($command);
+dump($result);
+//if($result->getStatus() === \KKMClient\Models\Queries\Enums\CommandStatuses::ERROR) {
+//    $closeShift = $client->executeCommand($zReport);
+//    var_dump($zReport);
+//    $result = $client->executeCommand($command);
+//}
+//var_dump($result);
+//$information = new \KKMClient\Models\Queries\Commands\CommandInformation();
+//$information->setId('230b35f2-5660-11e7-8118-024263e0537f');
+//$informationResponse = $client->executeCommand($information);
+//dump($informationResponse);
 
-if($devices = $result->getDevices()) {
-    $command = new \KKMClient\Models\Queries\Commands\DeviceInformation();
-    $command->setDeviceNumber($devices[0]->getDeviceNumber());
-    $result = $client->executeCommand($command);
-}
-var_dump($result);
+//if($devices = $result->getDevices()) {
+//    $command = new \KKMClient\Models\Queries\Commands\DeviceInformation();
+//    $command->setDeviceNumber(0);
+//    $result = $client->executeCommand($command);
+//}

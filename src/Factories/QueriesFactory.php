@@ -2,12 +2,13 @@
 
 namespace KKMClient\Factories;
 
-use JMS\Serializer\EventDispatcher\EventDispatcher;
+use JMS\Serializer\Handler\HandlerRegistry;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use KHerGe\JSON\JSON;
 use KKMClient\Exceptions\NonexistentClassName;
 use KKMClient\Exceptions\UnknownKKMCommand;
+use KKMClient\Handlers\CommandInformationHandler;
 use KKMClient\Interfaces\CommandInterface;
 use KKMClient\Models\Queries\Enums\Commands;
 
@@ -49,8 +50,11 @@ class QueriesFactory
      */
     public function __construct ( string $format = 'json' )
     {
-        $this->serializer   = SerializerBuilder::create()->configureListeners(function(EventDispatcher $dispatcher) {
-        })->build();
+        $this->serializer   = SerializerBuilder::create()
+            ->configureHandlers(function(HandlerRegistry $registry) {
+                $registry->registerSubscribingHandler(new CommandInformationHandler());
+            })
+            ->build();
         $this->commands     = ReflectionFactory::getReflection(Commands::class)->getConstants();
         $this->json = new JSON();
     }
@@ -76,7 +80,6 @@ class QueriesFactory
 
     public function serializeCommand( CommandInterface $command )
     {
-//        $className = $this->getCommandClassName($command->getName());
         return $this->serializer->serialize($command, 'json');
     }
 
@@ -87,11 +90,6 @@ class QueriesFactory
             throw new NonexistentClassName($class);
 
         return $this->serializer->deserialize($body, $className, 'json');
-    }
-
-    private function fromString( string $data )
-    {
-
     }
 
     /**

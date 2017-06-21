@@ -33,7 +33,7 @@ class Device
     /**
      * @var boolean
      * @SerializedName("OnOff")
-     * @Accessor(getter="geState",setter="setState")
+     * @Accessor(getter="getState",setter="setState")
      * @Type("boolean")
      */
     protected $state;
@@ -203,7 +203,7 @@ class Device
     /**
      * @return bool
      */
-    public function isState (): bool
+    public function getState (): bool
     {
         return $this->state;
     }
@@ -219,7 +219,7 @@ class Device
     /**
      * @return bool
      */
-    public function isStatus (): bool
+    public function getStatus (): bool
     {
         return $this->status;
     }
