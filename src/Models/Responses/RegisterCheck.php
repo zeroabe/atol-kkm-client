@@ -107,7 +107,7 @@ class RegisterCheck implements ResponseInterface
     /**
      * @return int
      */
-    public function getLineLength (): int
+    public function getLineLength ()
     {
         return $this->lineLength;
     }
@@ -115,7 +115,7 @@ class RegisterCheck implements ResponseInterface
     /**
      * @param int $lineLength
      */
-    public function setLineLength ( int $lineLength )
+    public function setLineLength ( int $lineLength = null)
     {
         $this->lineLength = $lineLength;
     }
