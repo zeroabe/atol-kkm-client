@@ -87,9 +87,9 @@ class DeviceList implements ResponseInterface
 
     /**
      * @param Device|null $device
-     * @return Device
+     * @return Device|null
      */
-    public function getNextActive(Device $device = null) : Device
+    public function getNextActive(Device $device = null)
     {
         $device = $device ? $device : $this->getFirstActive();
         $index = array_search($device, $this->devices);

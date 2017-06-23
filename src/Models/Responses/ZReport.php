@@ -9,7 +9,10 @@
 namespace KKMClient\Models\Responses;
 
 
-class ZReport
-{
+use KKMClient\Interfaces\ResponseInterface;
+use KKMClient\Traits\CommonResponseTrait;
 
+class ZReport implements ResponseInterface
+{
+    use CommonResponseTrait;
 }
