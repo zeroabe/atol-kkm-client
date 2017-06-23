@@ -52,7 +52,6 @@ class CommandInformationHandler implements SubscribingHandlerInterface
         $className = $object['Rezult']['Command'];
         $data = (new JSON())->encode($object['Rezult']);
         $result = (new QueriesFactory())->deSerializeResponse($data, $className);
-//        dump($result);
         return $result;
     }
 }

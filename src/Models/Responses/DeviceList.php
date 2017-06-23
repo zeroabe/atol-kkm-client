@@ -75,15 +75,14 @@ class DeviceList implements ResponseInterface
     }
 
     /**
-     * @return Device
+     * @return Device|null
      */
-    public function getFirstActive() : Device
+    public function getFirstActive()
     {
         foreach ($this->devices as $device) {
             if($device->getStatus()) return $device;
         }
-        //TODO Обработать этот случай по-человечески.
-        die("There is no active devices more!");
+        return null;
     }
 
     /**
