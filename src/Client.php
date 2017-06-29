@@ -63,7 +63,8 @@ class Client
             'base_uri' => $url,
             'auth' => [
                 $options['user'], $options['pass']
-            ]
+            ],
+            'verify' => false
         ];
         $this->http = new Http($config);
         $this->factory = new QueriesFactory();
